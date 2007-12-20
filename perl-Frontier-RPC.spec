@@ -12,6 +12,7 @@ Group:		Development/Perl
 Source:		http://search.cpan.org/CPAN/authors/id/K/KM/KMACLEOD/%{module}-%{version}.tar.bz2
 Url:		http://search.cpan.org/dist/%{module}/
 BuildArch:	noarch
+BuildRoot:	%{_tmppath}/%{name}-root
 # For make test:
 BuildRequires:	perl-XML-Parser
 
