@@ -9,12 +9,12 @@ Release:	%{release}
 Summary:	%{module} module for perl
 License:	GPL or Artistic
 Group:		Development/Perl
-Source:		http://search.cpan.org/CPAN/authors/id/K/KM/KMACLEOD/%{module}-%{version}.tar.bz2
 Url:		http://search.cpan.org/dist/%{module}/
+Source:		http://search.cpan.org/CPAN/authors/id/K/KM/KMACLEOD/%{module}-%{version}.tar.bz2
+BuildRequires:	perl(XML::Parser)
+BuildRequires:	perl(LWP::UserAgent)
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-root
-# For make test:
-BuildRequires:	perl-XML-Parser
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 Frontier::RPC implements UserLand Software's XML RPC (Remote Procedure Calls
@@ -33,16 +33,16 @@ servers using CGI, Apache, and standalone with HTTP::Daemon.
 %{__make} test
 
 %clean 
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall_std
-rm -f $RPM_BUILD_ROOT%{perl_vendorlib}/MIME/changes.pod
+rm -f %{buildroot}%{perl_vendorlib}/MIME/changes.pod
 
 %files
 %defattr(-,root,root)
 %doc ChangeLog COPYING README
 %{perl_vendorlib}/Frontier
-%{perl_vendorlib}/Apache/*
+%{perl_vendorlib}/Apache
 %{_mandir}/*/*
