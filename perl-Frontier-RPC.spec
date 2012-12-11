@@ -1,20 +1,19 @@
 %define module	Frontier-RPC
-%define name	perl-%{module}
-%define version 0.07b4
-%define release %mkrel 2
 
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		perl-%{module}
+Version:	0.07b4
+Release:	3
 Summary:	%{module} module for perl
 License:	GPL or Artistic
 Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{module}/
 Source:		http://search.cpan.org/CPAN/authors/id/K/KM/KMACLEOD/%{module}-%{version}.tar.bz2
+
+BuildRequires:	perl-devel
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	perl(LWP::UserAgent)
+BuildRequires:	perl(HTTP::Daemon)
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 Frontier::RPC implements UserLand Software's XML RPC (Remote Procedure Calls
@@ -26,23 +25,41 @@ servers using CGI, Apache, and standalone with HTTP::Daemon.
 %setup -q -n %{module}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make}
+perl Makefile.PL INSTALLDIRS=vendor
+make
 
 %check
-%{__make} test
-
-%clean 
-rm -rf %{buildroot}
+make test
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 rm -f %{buildroot}%{perl_vendorlib}/MIME/changes.pod
 
 %files
-%defattr(-,root,root)
 %doc ChangeLog COPYING README
 %{perl_vendorlib}/Frontier
 %{perl_vendorlib}/Apache
 %{_mandir}/*/*
+
+%changelog
+* Fri May 15 2009 Jérôme Quelin <jquelin@mandriva.org> 0.07b4-2mdv2010.0
++ Revision: 375949
+- rebuild
+
+* Sat Mar 14 2009 Guillaume Rousse <guillomovitch@mandriva.org> 0.07b4-1mdv2009.1
++ Revision: 354995
+- fix build dependencies
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+  + Buchan Milne <bgmilne@mandriva.org>
+    - Import perl-Frontier-RPC
+
+
+
+* Mon Mar 20 2006 Buchan Milne <bgmilne@mandriva.org> 0.07b4-1mdk
+- First Mandriva package
