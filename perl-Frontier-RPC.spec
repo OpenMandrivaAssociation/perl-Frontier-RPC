@@ -6,7 +6,7 @@ Release:	5
 Summary:	%{module} module for perl
 License:	GPL or Artistic
 Group:		Development/Perl
-Url:		http://search.cpan.org/dist/%{module}/
+Url:		https://search.cpan.org/dist/%{module}/
 Source:		http://search.cpan.org/CPAN/authors/id/K/KM/KMACLEOD/%{module}-%{version}.tar.bz2
 
 BuildRequires:	perl-devel
