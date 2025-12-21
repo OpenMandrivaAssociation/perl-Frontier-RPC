@@ -9,6 +9,7 @@ Group:		Development/Perl
 Url:		https://search.cpan.org/dist/%{module}/
 Source:		http://search.cpan.org/CPAN/authors/id/K/KM/KMACLEOD/%{module}-%{version}.tar.bz2
 
+BuildRequires:	make
 BuildRequires:	perl-devel
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	perl(LWP::UserAgent)
