@@ -1,8 +1,8 @@
 %define module	Frontier-RPC
 
 Name:		perl-%{module}
-Version:	0.07b4
-Release:	5
+Version:	0.07
+Release:	1
 Summary:	%{module} module for perl
 License:	GPL or Artistic
 Group:		Development/Perl
@@ -23,7 +23,7 @@ for making requests to a server and several server modules for implementing
 servers using CGI, Apache, and standalone with HTTP::Daemon.
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n Frontier-RPC-0.07b4p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
